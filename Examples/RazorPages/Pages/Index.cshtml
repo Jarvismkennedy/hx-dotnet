@@ -1,0 +1,23 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+
+}
+
+<div class="text-center mt-8 space-y-8">
+    <h1>Welcome</h1>
+    <p>Learn about
+        <a class="link" href="https://learn.microsoft.com/aspnet/core">
+            building Web apps with ASP.NET Core
+        </a>.
+    </p>
+
+    <button 
+        class="button" 
+        hx-post="@Url.Page("Index","OnPostAsync")" 
+        hx-swap-oob="#id"
+    >
+        Click me!
+    </button>
+</div>

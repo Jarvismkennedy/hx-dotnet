@@ -1,0 +1,22 @@
+[*.cs]
+
+# IDE0160: Convert to block scoped namespace
+csharp_style_namespace_declarations = file_scoped
+
+# IDE0028: Simplify collection initialization
+dotnet_style_collection_initializer = true
+
+
+# IDE0022: Use block body for method
+dotnet_diagnostic.IDE0022.severity = none
+
+# MA0016: Prefer using collection abstraction instead of implementation
+dotnet_diagnostic.MA0016.severity = none
+
+# MA0016: Prefer using collection abstraction instead of implementation
+dotnet_diagnostic.MA0016.severity = none
+
+[*.cshtml.cs]
+# ignore razor page models since the convention is Page.cshtml.cs and PageModel
+# MA0048: File name must match type name
+dotnet_diagnostic.MA0048.severity = none

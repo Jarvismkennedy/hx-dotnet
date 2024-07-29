@@ -1,0 +1,11 @@
+{
+  "type": "module",
+  "scripts": {
+    "watchcss": "npx tailwindcss -i ./wwwroot/css/site.css -o ./wwwroot/css/site.min.css --watch",
+    "buildcss": "npx tailwindcss -i ./wwwroot/css/site.css -o ./wwwroot/css/site.min.css --minify"
+  },
+  "devDependencies": {
+    "@tailwindcss/forms": "^0.5.7",
+    "tailwindcss": "^3.4.4"
+  }
+}
