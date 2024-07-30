@@ -135,4 +135,15 @@ public static class HttpResponseExtensions
         response.Headers.Append(HxResponseHeaderNames.HxTriggerAfterSwap, value);
         return response;
     }
+    
+    /// <summary>
+    /// Sets the status code to 286, telling htmx to stop polling.
+    /// </summary>
+    /// <param name="response"></param>
+    /// <returns></returns>
+    public static HttpResponse HxStopPolling(this HttpResponse response){
+
+        response.StatusCode=286;
+        return response;
+    }
 }

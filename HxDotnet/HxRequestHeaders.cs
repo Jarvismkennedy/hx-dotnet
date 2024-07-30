@@ -1,3 +1,5 @@
+using System.Diagnostics.CodeAnalysis;
+
 namespace HxDotnet;
 public class HxRequestHeaders
 {
