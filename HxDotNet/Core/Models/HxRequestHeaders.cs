@@ -1,6 +1,6 @@
-using System.Diagnostics.CodeAnalysis;
+using HxDotNet.Core.Constants;
 
-namespace HxDotnet;
+namespace HxDotNet.Core.Models;
 public class HxRequestHeaders
 {
     /// <summary>

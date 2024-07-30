@@ -1,4 +1,7 @@
-namespace HxDotnet;
+using HxDotNet.Core.Constants;
+using HxDotNet.Core.Models;
+
+namespace HxDotNet.HttpExtensions;
 
 public static class HttpRequestExtensions
 {

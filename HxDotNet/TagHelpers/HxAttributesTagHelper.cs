@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Razor.TagHelpers;
 
-namespace HxDotnet.TagHelpers;
+namespace HxDotNet.TagHelpers;
 
 [HtmlTargetElement("*", Attributes = "hx-*")]
-public class HtmxAttributesTagHelper : TagHelper
+public class HxAttributesTagHelper : TagHelper
 {
     public const string HxGetAttributeName = "hx-get";
     public const string HxPostAttributeName = "hx-post";
@@ -83,7 +83,7 @@ public class HtmxAttributesTagHelper : TagHelper
     /// handle events with inline scripts on elements
     /// </summary>
     [HtmlAttributeName(HxOnEventAttributeName, DictionaryAttributePrefix = HxOnAttributePrefix)]
-    public Dictionary<string, string?> HxOnDictionary { get; set; } = [];
+    public Dictionary<string, string?> HxOnDictionary { get; set; } = new Dictionary<string, string?>(StringComparer.InvariantCulture);
 
 
     // other attributes.

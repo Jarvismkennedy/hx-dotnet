@@ -1,7 +1,9 @@
 using System;
 using System.Text.Json;
+using HxDotNet.Configuration;
+using HxDotNet.Core.Constants;
 
-namespace HxDotnet;
+namespace HxDotNet;
 
 public static class HttpResponseExtensions
 {

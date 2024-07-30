@@ -1,6 +1,6 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
-namespace HxDotnet;
+namespace HxDotNet.Configuration;
 public static class JsonConfiguration
 {
     public static readonly JsonSerializerOptions Options = new()

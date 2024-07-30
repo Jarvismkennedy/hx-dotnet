@@ -1,6 +1,8 @@
+using HxDotNet.Core.Models;
+using HxDotNet.HttpExtensions;
 using Microsoft.AspNetCore.Mvc;
 
-namespace HxDotnet;
+namespace HxDotNet.MVC;
 public class HxController : Controller
 {
 #pragma warning disable S6967 // ModelState.IsValid should be called in controller actions

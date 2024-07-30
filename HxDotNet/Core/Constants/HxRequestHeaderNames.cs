@@ -1,4 +1,4 @@
-﻿namespace HxDotnet;
+﻿namespace HxDotNet.Core.Constants;
 
 public static class HxRequestHeaderNames
 {
