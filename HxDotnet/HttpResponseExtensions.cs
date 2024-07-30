@@ -1,6 +1,5 @@
-using System.Collections.Generic;
+using System;
 using System.Text.Json;
-using Microsoft.AspNetCore.Http.Json;
 
 namespace HxDotnet;
 
@@ -13,9 +12,20 @@ public static class HttpResponseExtensions
     /// <param name="response"></param>
     /// <param name="value"></param>
     /// <returns></returns>
-    public static HttpResponse HxLocation(this HttpResponse response, string value)
+    public static HttpResponse HxLocation(this HttpResponse response, Uri uri)
     {
-        response.Headers.Append(HxResponseHeaderNames.HxLocation, value);
+        response.Headers.Append(HxResponseHeaderNames.HxLocation, uri.ToString());
+        return response;
+    }
+    /// <summary>
+    /// <inheritdoc cref="HxResponseHeaderNames.HxLocation"/>
+    /// </summary>
+    /// <param name="response"></param>
+    /// <param name="value"></param>
+    /// <returns></returns>
+    public static HttpResponse HxLocation(this HttpResponse response, string url)
+    {
+        response.Headers.Append(HxResponseHeaderNames.HxLocation, url);
         return response;
     }
     /// <summary>
@@ -24,9 +34,20 @@ public static class HttpResponseExtensions
     /// <param name="response"></param>
     /// <param name="value"></param>
     /// <returns></returns>
-    public static HttpResponse HxPushUrl(this HttpResponse response, string value)
+    public static HttpResponse HxPushUrl(this HttpResponse response, Uri uri)
     {
-        response.Headers.Append(HxResponseHeaderNames.HxPushUrl, value);
+        response.Headers.Append(HxResponseHeaderNames.HxPushUrl, uri.ToString());
+        return response;
+    }
+    /// <summary>
+    /// <inheritdoc cref="HxResponseHeaderNames.HxPushUrl"/>
+    /// </summary>
+    /// <param name="response"></param>
+    /// <param name="value"></param>
+    /// <returns></returns>
+    public static HttpResponse HxPushUrl(this HttpResponse response, string url)
+    {
+        response.Headers.Append(HxResponseHeaderNames.HxPushUrl, url);
         return response;
     }
 
@@ -37,9 +58,21 @@ public static class HttpResponseExtensions
     /// <param name="value"></param>
     /// <returns></returns>
     /// <inheritdoc />
-    public static HttpResponse HxRedirect(this HttpResponse response, string value)
+    public static HttpResponse HxRedirect(this HttpResponse response, string url)
     {
-        response.Headers.Append(HxResponseHeaderNames.HxRedirect, value);
+        response.Headers.Append(HxResponseHeaderNames.HxRedirect, url);
+        return response;
+    }
+    /// <summary>
+    /// <inheritdoc cref="HxResponseHeaderNames.HxRedirect"/>
+    /// </summary>
+    /// <param name="response"></param>
+    /// <param name="value"></param>
+    /// <returns></returns>
+    /// <inheritdoc />
+    public static HttpResponse HxRedirect(this HttpResponse response, Uri uri)
+    {
+        response.Headers.Append(HxResponseHeaderNames.HxRedirect, uri.ToString());
         return response;
     }
     /// <summary>
@@ -49,9 +82,9 @@ public static class HttpResponseExtensions
     /// <param name="value"></param>
     /// <returns></returns>
     /// <inheritdoc />
-    public static HttpResponse HxRefresh(this HttpResponse response, string value)
+    public static HttpResponse HxRefresh(this HttpResponse response, bool shouldRefresh)
     {
-        response.Headers.Append(HxResponseHeaderNames.HxRefresh, value);
+        response.Headers.Append(HxResponseHeaderNames.HxRefresh, shouldRefresh ? "true" : "false");
         return response;
     }
     /// <summary>
@@ -61,11 +94,37 @@ public static class HttpResponseExtensions
     /// <param name="value"></param>
     /// <returns></returns>
     /// <inheritdoc />
-    public static HttpResponse HxReplaceUrl(this HttpResponse response, string value)
+    public static HttpResponse HxReplaceUrl(this HttpResponse response, string url)
     {
-        response.Headers.Append(HxResponseHeaderNames.HxReplaceUrl, value);
+        response.Headers.Append(HxResponseHeaderNames.HxReplaceUrl, url);
         return response;
     }
+    /// <summary>
+    /// <inheritdoc cref="HxResponseHeaderNames.HxReplaceUrl"/>
+    /// </summary>
+    /// <param name="response"></param>
+    /// <param name="value"></param>
+    /// <returns></returns>
+    /// <inheritdoc />
+    public static HttpResponse HxReplaceUrl(this HttpResponse response, Uri uri)
+    {
+        response.Headers.Append(HxResponseHeaderNames.HxReplaceUrl, uri.ToString());
+        return response;
+    }
+    /// <summary>
+    /// <inheritdoc cref="HxResponseHeaderNames.HxReplaceUrl"/>
+    /// Prevents the browsers url from being updated.
+    /// </summary>
+    /// <param name="response"></param>
+    /// <param name="value"></param>
+    /// <returns></returns>
+    /// <inheritdoc />
+    public static HttpResponse HxPreventReplaceUrl(this HttpResponse response)
+    {
+        response.Headers.Append(HxResponseHeaderNames.HxReplaceUrl, "false");
+        return response;
+    }
+
     /// <summary>
     /// <inheritdoc cref="HxResponseHeaderNames.HxReswap"/>
     /// </summary>
@@ -109,9 +168,9 @@ public static class HttpResponseExtensions
     /// <param name="value"></param>
     /// <returns></returns>
     /// <inheritdoc />
-    public static HttpResponse HxTrigger(this HttpResponse response, string value)
+    public static HttpResponse HxTrigger(this HttpResponse response, IReadOnlyDictionary<string, object> events)
     {
-        response.SetEvents(HxResponseHeaderNames.HxTrigger, value);
+        response.SetEvents(HxResponseHeaderNames.HxTrigger, events);
         return response;
     }
     /// <summary>
@@ -121,9 +180,9 @@ public static class HttpResponseExtensions
     /// <param name="value"></param>
     /// <returns></returns>
     /// <inheritdoc />
-    public static HttpResponse HxTriggerAfterSettle(this HttpResponse response, string value)
+    public static HttpResponse HxTriggerAfterSettle(this HttpResponse response, IReadOnlyDictionary<string, object> events)
     {
-        response.SetEvents(HxResponseHeaderNames.HxTriggerAfterSettle, value);
+        response.SetEvents(HxResponseHeaderNames.HxTriggerAfterSettle, events);
         return response;
     }
     /// <summary>
@@ -133,9 +192,9 @@ public static class HttpResponseExtensions
     /// <param name="value"></param>
     /// <returns></returns>
     /// <inheritdoc />
-    public static HttpResponse HxTriggerAfterSwap(this HttpResponse response, string value)
+    public static HttpResponse HxTriggerAfterSwap(this HttpResponse response, IReadOnlyDictionary<string, object> events)
     {
-        response.SetEvents(HxResponseHeaderNames.HxTriggerAfterSwap, value);
+        response.SetEvents(HxResponseHeaderNames.HxTriggerAfterSwap, events);
         return response;
     }
     private static void SetEvents(this HttpResponse response, string triggerHeader, IReadOnlyDictionary<string, object> events)
