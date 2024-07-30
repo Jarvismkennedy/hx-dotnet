@@ -1,3 +1,6 @@
+using System.Collections.Generic;
+using System.Text.Json;
+using Microsoft.AspNetCore.Http.Json;
 
 namespace HxDotnet;
 
@@ -108,7 +111,7 @@ public static class HttpResponseExtensions
     /// <inheritdoc />
     public static HttpResponse HxTrigger(this HttpResponse response, string value)
     {
-        response.Headers.Append(HxResponseHeaderNames.HxTrigger, value);
+        response.SetEvents(HxResponseHeaderNames.HxTrigger, value);
         return response;
     }
     /// <summary>
@@ -120,7 +123,7 @@ public static class HttpResponseExtensions
     /// <inheritdoc />
     public static HttpResponse HxTriggerAfterSettle(this HttpResponse response, string value)
     {
-        response.Headers.Append(HxResponseHeaderNames.HxTriggerAfterSettle, value);
+        response.SetEvents(HxResponseHeaderNames.HxTriggerAfterSettle, value);
         return response;
     }
     /// <summary>
@@ -132,18 +135,49 @@ public static class HttpResponseExtensions
     /// <inheritdoc />
     public static HttpResponse HxTriggerAfterSwap(this HttpResponse response, string value)
     {
-        response.Headers.Append(HxResponseHeaderNames.HxTriggerAfterSwap, value);
+        response.SetEvents(HxResponseHeaderNames.HxTriggerAfterSwap, value);
         return response;
     }
-    
+    private static void SetEvents(this HttpResponse response, string triggerHeader, IReadOnlyDictionary<string, object> events)
+    {
+        if (triggerHeader is not HxResponseHeaderNames.HxTrigger and not HxResponseHeaderNames.HxTriggerAfterSettle
+        and not HxResponseHeaderNames.HxTriggerAfterSwap)
+        {
+            throw new ArgumentException("Invalid trigger header", triggerHeader);
+        }
+        var hasCurrentValues = response.Headers.TryGetValue(triggerHeader, out var currentHeader);
+        if (hasCurrentValues)
+        {
+            var currentEvents = JsonSerializer.Deserialize<Dictionary<string, object>>(currentHeader.ToString())!;
+            foreach (var (key, value) in events)
+            {
+                currentEvents.TryAdd(key, value);
+            }
+            events = currentEvents;
+        }
+        response.Headers[triggerHeader] = JsonSerializer.Serialize(events, JsonConfiguration.Options);
+    }
+
     /// <summary>
-    /// Sets the status code to 286, telling htmx to stop polling.
+    /// Sets the status code to <see href="https://en.wikipedia.org/wiki/86_(term)">286</see>, telling htmx to stop polling.
     /// </summary>
     /// <param name="response"></param>
     /// <returns></returns>
-    public static HttpResponse HxStopPolling(this HttpResponse response){
-
-        response.StatusCode=286;
+    public static HttpResponse HxStopPolling(this HttpResponse response)
+    {
+        response.StatusCode = 286;
         return response;
+    }
+    /// <summary>
+    /// Sets the status code to statusCode
+    /// </summary>
+    /// <param name="response"></param>
+    /// <param name="statusCode"></param>
+    /// <returns></returns>
+    public static HttpResponse StatusCode(this HttpResponse response, int statusCode)
+    {
+        response.StatusCode = statusCode;
+        return response;
+
     }
 }
