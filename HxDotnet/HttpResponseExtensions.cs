@@ -5,30 +5,30 @@ public static class HttpResponseExtensions
 {
 
     /// <summary>
-    /// <inheritdoc cref="ResponseHeaderNames.HxLocation"/>
+    /// <inheritdoc cref="HxResponseHeaderNames.HxLocation"/>
     /// </summary>
     /// <param name="response"></param>
     /// <param name="value"></param>
     /// <returns></returns>
     public static HttpResponse HxLocation(this HttpResponse response, string value)
     {
-        response.Headers.Append(ResponseHeaderNames.HxLocation, value);
+        response.Headers.Append(HxResponseHeaderNames.HxLocation, value);
         return response;
     }
     /// <summary>
-    /// <inheritdoc cref="ResponseHeaderNames.HxPushUrl"/>
+    /// <inheritdoc cref="HxResponseHeaderNames.HxPushUrl"/>
     /// </summary>
     /// <param name="response"></param>
     /// <param name="value"></param>
     /// <returns></returns>
     public static HttpResponse HxPushUrl(this HttpResponse response, string value)
     {
-        response.Headers.Append(ResponseHeaderNames.HxPushUrl, value);
+        response.Headers.Append(HxResponseHeaderNames.HxPushUrl, value);
         return response;
     }
 
     /// <summary>
-    /// <inheritdoc cref="ResponseHeaderNames.HxRedirect"/>
+    /// <inheritdoc cref="HxResponseHeaderNames.HxRedirect"/>
     /// </summary>
     /// <param name="response"></param>
     /// <param name="value"></param>
@@ -36,11 +36,11 @@ public static class HttpResponseExtensions
     /// <inheritdoc />
     public static HttpResponse HxRedirect(this HttpResponse response, string value)
     {
-        response.Headers.Append(ResponseHeaderNames.HxRedirect, value);
+        response.Headers.Append(HxResponseHeaderNames.HxRedirect, value);
         return response;
     }
     /// <summary>
-    /// <inheritdoc cref="ResponseHeaderNames.HxRefresh"/>
+    /// <inheritdoc cref="HxResponseHeaderNames.HxRefresh"/>
     /// </summary>
     /// <param name="response"></param>
     /// <param name="value"></param>
@@ -48,11 +48,11 @@ public static class HttpResponseExtensions
     /// <inheritdoc />
     public static HttpResponse HxRefresh(this HttpResponse response, string value)
     {
-        response.Headers.Append(ResponseHeaderNames.HxRefresh, value);
+        response.Headers.Append(HxResponseHeaderNames.HxRefresh, value);
         return response;
     }
     /// <summary>
-    /// <inheritdoc cref="ResponseHeaderNames.HxReplaceUrl"/>
+    /// <inheritdoc cref="HxResponseHeaderNames.HxReplaceUrl"/>
     /// </summary>
     /// <param name="response"></param>
     /// <param name="value"></param>
@@ -60,11 +60,11 @@ public static class HttpResponseExtensions
     /// <inheritdoc />
     public static HttpResponse HxReplaceUrl(this HttpResponse response, string value)
     {
-        response.Headers.Append(ResponseHeaderNames.HxReplaceUrl, value);
+        response.Headers.Append(HxResponseHeaderNames.HxReplaceUrl, value);
         return response;
     }
     /// <summary>
-    /// <inheritdoc cref="ResponseHeaderNames.HxReswap"/>
+    /// <inheritdoc cref="HxResponseHeaderNames.HxReswap"/>
     /// </summary>
     /// <param name="response"></param>
     /// <param name="value"></param>
@@ -72,11 +72,11 @@ public static class HttpResponseExtensions
     /// <inheritdoc />
     public static HttpResponse HxReswap(this HttpResponse response, string value)
     {
-        response.Headers.Append(ResponseHeaderNames.HxReswap, value);
+        response.Headers.Append(HxResponseHeaderNames.HxReswap, value);
         return response;
     }
     /// <summary>
-    /// <inheritdoc cref="ResponseHeaderNames.HxRetarget"/>
+    /// <inheritdoc cref="HxResponseHeaderNames.HxRetarget"/>
     /// </summary>
     /// <param name="response"></param>
     /// <param name="value"></param>
@@ -84,11 +84,11 @@ public static class HttpResponseExtensions
     /// <inheritdoc />
     public static HttpResponse HxRetarget(this HttpResponse response, string value)
     {
-        response.Headers.Append(ResponseHeaderNames.HxRetarget, value);
+        response.Headers.Append(HxResponseHeaderNames.HxRetarget, value);
         return response;
     }
     /// <summary>
-    /// <inheritdoc cref="ResponseHeaderNames.HxReselect"/>
+    /// <inheritdoc cref="HxResponseHeaderNames.HxReselect"/>
     /// </summary>
     /// <param name="response"></param>
     /// <param name="value"></param>
@@ -96,11 +96,11 @@ public static class HttpResponseExtensions
     /// <inheritdoc />
     public static HttpResponse HxReselect(this HttpResponse response, string value)
     {
-        response.Headers.Append(ResponseHeaderNames.HxReselect, value);
+        response.Headers.Append(HxResponseHeaderNames.HxReselect, value);
         return response;
     }
     /// <summary>
-    /// <inheritdoc cref="ResponseHeaderNames.HxTrigger"/>
+    /// <inheritdoc cref="HxResponseHeaderNames.HxTrigger"/>
     /// </summary>
     /// <param name="response"></param>
     /// <param name="value"></param>
@@ -108,11 +108,11 @@ public static class HttpResponseExtensions
     /// <inheritdoc />
     public static HttpResponse HxTrigger(this HttpResponse response, string value)
     {
-        response.Headers.Append(ResponseHeaderNames.HxTrigger, value);
+        response.Headers.Append(HxResponseHeaderNames.HxTrigger, value);
         return response;
     }
     /// <summary>
-    /// <inheritdoc cref="ResponseHeaderNames.HxTriggerAfterSettle"/>
+    /// <inheritdoc cref="HxResponseHeaderNames.HxTriggerAfterSettle"/>
     /// </summary>
     /// <param name="response"></param>
     /// <param name="value"></param>
@@ -120,11 +120,11 @@ public static class HttpResponseExtensions
     /// <inheritdoc />
     public static HttpResponse HxTriggerAfterSettle(this HttpResponse response, string value)
     {
-        response.Headers.Append(ResponseHeaderNames.HxTriggerAfterSettle, value);
+        response.Headers.Append(HxResponseHeaderNames.HxTriggerAfterSettle, value);
         return response;
     }
     /// <summary>
-    /// <inheritdoc cref="ResponseHeaderNames.HxTriggerAfterSwap"/>
+    /// <inheritdoc cref="HxResponseHeaderNames.HxTriggerAfterSwap"/>
     /// </summary>
     /// <param name="response"></param>
     /// <param name="value"></param>
@@ -132,7 +132,7 @@ public static class HttpResponseExtensions
     /// <inheritdoc />
     public static HttpResponse HxTriggerAfterSwap(this HttpResponse response, string value)
     {
-        response.Headers.Append(ResponseHeaderNames.HxTriggerAfterSwap, value);
+        response.Headers.Append(HxResponseHeaderNames.HxTriggerAfterSwap, value);
         return response;
     }
 }

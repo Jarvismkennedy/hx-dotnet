@@ -1,6 +1,6 @@
 ﻿namespace HxDotnet;
 
-public static class RequestHeaderNames
+public static class HxRequestHeaderNames
 {
     /// <summary>
     /// indicates that the request is via an element using hx-boost

@@ -1,6 +1,6 @@
 namespace HxDotnet;
 
-public static class ResponseHeaderNames
+public static class HxResponseHeaderNames
 {
     /// <summary>
     /// allows you to do a client-side redirect that does not do a full page reload
