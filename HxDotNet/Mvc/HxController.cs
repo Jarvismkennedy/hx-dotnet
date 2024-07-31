@@ -2,7 +2,7 @@ using HxDotNet.Core.Models;
 using HxDotNet.HttpExtensions;
 using Microsoft.AspNetCore.Mvc;
 
-namespace HxDotNet.MVC;
+namespace HxDotNet.Mvc;
 /// <summary>
 /// Controller that extends from <see cref="Controller"/>, adding htmx specific functionality.
 /// </summary>
