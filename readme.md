@@ -2,7 +2,7 @@
 
 htmx integration for dotnet.
 
-Currently a work in progress. There will be breaking changes.
+Currently a work in progress. There will be breaking changes. Examples are not complete.
 
 # HxController
 
