@@ -3,8 +3,11 @@ using System.Text.Json;
 using HxDotNet.Configuration;
 using HxDotNet.Core.Constants;
 
-namespace HxDotNet;
+namespace HxDotNet.HttpExtensions;
 
+/// <summary>
+/// Defines extension methods for adding htmx functionality to the response.
+/// </summary>
 public static class HttpResponseExtensions
 {
 
@@ -12,7 +15,7 @@ public static class HttpResponseExtensions
     /// <inheritdoc cref="HxResponseHeaderNames.HxLocation"/>
     /// </summary>
     /// <param name="response"></param>
-    /// <param name="value"></param>
+    /// <param name="uri"></param>
     /// <returns></returns>
     public static HttpResponse HxLocation(this HttpResponse response, Uri uri)
     {
@@ -23,7 +26,7 @@ public static class HttpResponseExtensions
     /// <inheritdoc cref="HxResponseHeaderNames.HxLocation"/>
     /// </summary>
     /// <param name="response"></param>
-    /// <param name="value"></param>
+    /// <param name="url"></param>
     /// <returns></returns>
     public static HttpResponse HxLocation(this HttpResponse response, string url)
     {
@@ -34,7 +37,7 @@ public static class HttpResponseExtensions
     /// <inheritdoc cref="HxResponseHeaderNames.HxPushUrl"/>
     /// </summary>
     /// <param name="response"></param>
-    /// <param name="value"></param>
+    /// <param name="uri"></param>
     /// <returns></returns>
     public static HttpResponse HxPushUrl(this HttpResponse response, Uri uri)
     {
@@ -45,7 +48,7 @@ public static class HttpResponseExtensions
     /// <inheritdoc cref="HxResponseHeaderNames.HxPushUrl"/>
     /// </summary>
     /// <param name="response"></param>
-    /// <param name="value"></param>
+    /// <param name="url"></param>
     /// <returns></returns>
     public static HttpResponse HxPushUrl(this HttpResponse response, string url)
     {
@@ -57,7 +60,7 @@ public static class HttpResponseExtensions
     /// <inheritdoc cref="HxResponseHeaderNames.HxRedirect"/>
     /// </summary>
     /// <param name="response"></param>
-    /// <param name="value"></param>
+    /// <param name="url"></param>
     /// <returns></returns>
     /// <inheritdoc />
     public static HttpResponse HxRedirect(this HttpResponse response, string url)
@@ -69,7 +72,7 @@ public static class HttpResponseExtensions
     /// <inheritdoc cref="HxResponseHeaderNames.HxRedirect"/>
     /// </summary>
     /// <param name="response"></param>
-    /// <param name="value"></param>
+    /// <param name="uri"></param>
     /// <returns></returns>
     /// <inheritdoc />
     public static HttpResponse HxRedirect(this HttpResponse response, Uri uri)
@@ -81,7 +84,7 @@ public static class HttpResponseExtensions
     /// <inheritdoc cref="HxResponseHeaderNames.HxRefresh"/>
     /// </summary>
     /// <param name="response"></param>
-    /// <param name="value"></param>
+    /// <param name="shouldRefresh"></param>
     /// <returns></returns>
     /// <inheritdoc />
     public static HttpResponse HxRefresh(this HttpResponse response, bool shouldRefresh)
@@ -93,7 +96,7 @@ public static class HttpResponseExtensions
     /// <inheritdoc cref="HxResponseHeaderNames.HxReplaceUrl"/>
     /// </summary>
     /// <param name="response"></param>
-    /// <param name="value"></param>
+    /// <param name="url"></param>
     /// <returns></returns>
     /// <inheritdoc />
     public static HttpResponse HxReplaceUrl(this HttpResponse response, string url)
@@ -105,7 +108,7 @@ public static class HttpResponseExtensions
     /// <inheritdoc cref="HxResponseHeaderNames.HxReplaceUrl"/>
     /// </summary>
     /// <param name="response"></param>
-    /// <param name="value"></param>
+    /// <param name="uri"></param>
     /// <returns></returns>
     /// <inheritdoc />
     public static HttpResponse HxReplaceUrl(this HttpResponse response, Uri uri)
@@ -114,11 +117,11 @@ public static class HttpResponseExtensions
         return response;
     }
     /// <summary>
+    /// Sets the hx-replace-url header to false.
     /// <inheritdoc cref="HxResponseHeaderNames.HxReplaceUrl"/>
     /// Prevents the browsers url from being updated.
     /// </summary>
     /// <param name="response"></param>
-    /// <param name="value"></param>
     /// <returns></returns>
     /// <inheritdoc />
     public static HttpResponse HxPreventReplaceUrl(this HttpResponse response)
@@ -167,7 +170,7 @@ public static class HttpResponseExtensions
     /// <inheritdoc cref="HxResponseHeaderNames.HxTrigger"/>
     /// </summary>
     /// <param name="response"></param>
-    /// <param name="value"></param>
+    /// <param name="events"></param>
     /// <returns></returns>
     /// <inheritdoc />
     public static HttpResponse HxTrigger(this HttpResponse response, IReadOnlyDictionary<string, object> events)
@@ -179,7 +182,7 @@ public static class HttpResponseExtensions
     /// <inheritdoc cref="HxResponseHeaderNames.HxTriggerAfterSettle"/>
     /// </summary>
     /// <param name="response"></param>
-    /// <param name="value"></param>
+    /// <param name="events"></param>
     /// <returns></returns>
     /// <inheritdoc />
     public static HttpResponse HxTriggerAfterSettle(this HttpResponse response, IReadOnlyDictionary<string, object> events)
@@ -191,7 +194,7 @@ public static class HttpResponseExtensions
     /// <inheritdoc cref="HxResponseHeaderNames.HxTriggerAfterSwap"/>
     /// </summary>
     /// <param name="response"></param>
-    /// <param name="value"></param>
+    /// <param name="events"></param>
     /// <returns></returns>
     /// <inheritdoc />
     public static HttpResponse HxTriggerAfterSwap(this HttpResponse response, IReadOnlyDictionary<string, object> events)

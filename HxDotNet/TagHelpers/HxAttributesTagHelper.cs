@@ -88,29 +88,29 @@ public class HxAttributesTagHelper : TagHelper
 
     // other attributes.
 
-    public const string HxBoostAttributeName = "hx-boost";
-    public const string HxConfirmAttributeName = "hx-confirm";
-    public const string HxDeleteAttributeName = "hx-delete";
-    public const string HxDisableAttributeName = "hx-disable";
-    public const string HxDisableEltAttributeName = "hx-disabled-elt";
-    public const string HxDisinheritAttributeName = "hx-disinherit";
-    public const string HxEncodingAttributeName = "hx-encoding";
-    public const string HxExtAttributeName = "hx-ext";
-    public const string HxHeadersAttributeName = "hx-headers";
-    public const string HxHistoryAttributeName = "hx-history";
-    public const string HxHistoryEltAttributeName = "hx-history-elt";
-    public const string HxIncludeAttributeName = "hx-include";
-    public const string HxIndicatorAttributeName = "hx-indicator";
-    public const string HxInheritAttributeName = "hx-inherit";
-    public const string HxParamsAttributeName = "hx-params";
-    public const string HxPatchAttributeName = "hx-patch";
-    public const string HxPreserveAttributeName = "hx-preserve";
-    public const string HxPromptAttributeName = "hx-prompt";
-    public const string HxPutAttributeName = "hx-put";
-    public const string HxReplaceUrlAttributeName = "hx-replace-url";
-    public const string HxRequestAttributeName = "hx-request";
-    public const string HxSyncAttributeName = "hx-sync";
-    public const string HxValidateAttributeName = "hx-validate";
+    private const string HxBoostAttributeName = "hx-boost";
+    private const string HxConfirmAttributeName = "hx-confirm";
+    private const string HxDeleteAttributeName = "hx-delete";
+    private const string HxDisableAttributeName = "hx-disable";
+    private const string HxDisableEltAttributeName = "hx-disabled-elt";
+    private const string HxDisinheritAttributeName = "hx-disinherit";
+    private const string HxEncodingAttributeName = "hx-encoding";
+    private const string HxExtAttributeName = "hx-ext";
+    private const string HxHeadersAttributeName = "hx-headers";
+    private const string HxHistoryAttributeName = "hx-history";
+    private const string HxHistoryEltAttributeName = "hx-history-elt";
+    private const string HxIncludeAttributeName = "hx-include";
+    private const string HxIndicatorAttributeName = "hx-indicator";
+    private const string HxInheritAttributeName = "hx-inherit";
+    private const string HxParamsAttributeName = "hx-params";
+    private const string HxPatchAttributeName = "hx-patch";
+    private const string HxPreserveAttributeName = "hx-preserve";
+    private const string HxPromptAttributeName = "hx-prompt";
+    private const string HxPutAttributeName = "hx-put";
+    private const string HxReplaceUrlAttributeName = "hx-replace-url";
+    private const string HxRequestAttributeName = "hx-request";
+    private const string HxSyncAttributeName = "hx-sync";
+    private const string HxValidateAttributeName = "hx-validate";
     /// <summary>
     /// add progressive enhancement for links and forms
     /// </summary>
@@ -254,6 +254,12 @@ public class HxAttributesTagHelper : TagHelper
     public string? HxValidate { get; set; }
 
 #pragma warning disable MA0051 // Method is too long - think of something better to do for tag helpers later.
+    /// <summary>
+    /// <inheritdoc/>
+    /// </summary>
+    /// <param name="context"></param>
+    /// <param name="output"></param>
+    /// <returns></returns>
     public override Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
 #pragma warning restore MA0051 // Method is too long
     {
@@ -305,7 +311,7 @@ public class HxAttributesTagHelper : TagHelper
         }
 
 
-        /// other attributes
+        // other attributes
 
         if (HxBoost is not null)
         {

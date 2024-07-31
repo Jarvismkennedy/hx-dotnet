@@ -3,12 +3,25 @@ using HxDotNet.Core.Models;
 
 namespace HxDotNet.HttpExtensions;
 
+/// <summary>
+/// Defines extension methods for working with htmx request headers
+/// </summary>
 public static class HttpRequestExtensions
 {
+    /// <summary>
+    /// Returns true if the request was sent with htmx, otherwise false.
+    /// </summary>
+    /// <param name="request"></param>
+    /// <returns></returns>
     public static bool IsHxRequest(this HttpRequest request)
     {
         return request.Headers.ContainsKey(HxRequestHeaderNames.HxRequest);
     }
+    /// <summary>
+    /// Extracts the htmx request headers from the request.
+    /// </summary>
+    /// <param name="request"></param>
+    /// <returns></returns>
     public static HxRequestHeaders GetHxHeaders(this HttpRequest request)
     {
         request.Headers.TryGetValue(HxRequestHeaderNames.HxBoosted, out var HxBoosted);

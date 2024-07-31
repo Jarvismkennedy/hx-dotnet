@@ -1,6 +1,9 @@
 using HxDotNet.Core.Constants;
 
 namespace HxDotNet.Core.Models;
+/// <summary>
+/// Model for extracting the htmx request headers. <see cref="HxDotNet.HttpExtensions.HttpRequestExtensions.GetHxHeaders(HttpRequest)"/>
+/// </summary>
 public class HxRequestHeaders
 {
     /// <summary>

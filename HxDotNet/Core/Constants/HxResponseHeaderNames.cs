@@ -1,5 +1,8 @@
 namespace HxDotNet.Core.Constants;
 
+/// <summary>
+/// Defines the names of htmx response headers
+/// </summary>
 public static class HxResponseHeaderNames
 {
     /// <summary>
