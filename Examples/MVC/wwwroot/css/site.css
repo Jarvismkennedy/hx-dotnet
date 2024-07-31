@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* only use simple single element things (button / form controls etc) for components otherwise it defeats the purpose of taiwlind */
+@layer components {
+  .button {
+    @apply inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-slate-100 disabled:pointer-events-none disabled:opacity-50;
+    @apply h-9 px-4 py-2;
+    @apply bg-violet-700 text-slate-100 shadow hover:bg-violet-700/90;
+  }
+  .link {
+    @apply underline-offset-4 hover:underline text-sm font-medium;
+    @apply text-blue-700;
+  }
+}

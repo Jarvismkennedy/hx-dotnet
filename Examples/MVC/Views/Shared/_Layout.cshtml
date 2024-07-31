@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html lang="en" id="tw">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+    <script src="./lib/htmx/htmx.min.js"></script>
+    <script src="./lib/aplinejs/cdn.min.js"></script>
+    @await RenderSectionAsync("Head", required: false)
+</head>
+
+<body class="flex flex-col min-h-screen dark:bg-slate-800">
+    <header class="content-grid bg-slate-800 text-slate-50 p-4 font-family">
+        <span class="font-semibold text-2xl tracking-tight font-mono">
+            HxDotNet
+        </span>
+    </header>
+    <main role="main" class="content-grid flex-1">
+        @RenderBody()
+    </main>
+    <footer class="content-grid">
+        <div>
+            &copy; 2024 - RazorPages - <a class="link" asp-area="" asp-page="/Privacy">Privacy</a>
+        </div>
+    </footer>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+
+</html>

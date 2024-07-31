@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RazorPages", "Examples\Razo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HxDotNet", "HxDotNet\HxDotNet.csproj", "{807AA24A-9EED-4B20-8625-41760A89CCBC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVC", "Examples\MVC\MVC.csproj", "{8ACCBDD2-1DE8-4C31-9C47-C935E1281C79}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,8 +28,13 @@ Global
 		{807AA24A-9EED-4B20-8625-41760A89CCBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{807AA24A-9EED-4B20-8625-41760A89CCBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{807AA24A-9EED-4B20-8625-41760A89CCBC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8ACCBDD2-1DE8-4C31-9C47-C935E1281C79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8ACCBDD2-1DE8-4C31-9C47-C935E1281C79}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8ACCBDD2-1DE8-4C31-9C47-C935E1281C79}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8ACCBDD2-1DE8-4C31-9C47-C935E1281C79}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{90B241B6-AFFF-4585-9F2A-BAB998462404} = {2E1DEF4C-8DD4-4589-9D6D-A85E18631C59}
+		{8ACCBDD2-1DE8-4C31-9C47-C935E1281C79} = {2E1DEF4C-8DD4-4589-9D6D-A85E18631C59}
 	EndGlobalSection
 EndGlobal
