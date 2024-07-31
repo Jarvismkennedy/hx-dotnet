@@ -2,21 +2,24 @@ using Microsoft.AspNetCore.Razor.TagHelpers;
 
 namespace HxDotNet.TagHelpers;
 
+/// <summary>
+/// Defines hx- attributes for lsp support in cshtml pages.
+/// </summary>
 [HtmlTargetElement("*", Attributes = "hx-*")]
 public class HxAttributesTagHelper : TagHelper
 {
-    public const string HxGetAttributeName = "hx-get";
-    public const string HxPostAttributeName = "hx-post";
-    public const string HxPushUrlAttributeName = "hx-push-url";
-    public const string HxSelectAttributeName = "hx-select";
-    public const string HxSelectOobAttributeName = "hx-select-oob";
-    public const string HxSwapAttributeName = "hx-swap";
-    public const string HxSwapOobAttributeName = "hx-swap-oob";
-    public const string HxTargetAttributeName = "hx-target";
-    public const string HxTriggerAttributeName = "hx-trigger";
-    public const string HxValsAttributeName = "hx-vals";
-    public const string HxOnEventAttributeName = "hx-on-events";
-    public const string HxOnAttributePrefix = "hx-on-";
+    private const string HxGetAttributeName = "hx-get";
+    private const string HxPostAttributeName = "hx-post";
+    private const string HxPushUrlAttributeName = "hx-push-url";
+    private const string HxSelectAttributeName = "hx-select";
+    private const string HxSelectOobAttributeName = "hx-select-oob";
+    private const string HxSwapAttributeName = "hx-swap";
+    private const string HxSwapOobAttributeName = "hx-swap-oob";
+    private const string HxTargetAttributeName = "hx-target";
+    private const string HxTriggerAttributeName = "hx-trigger";
+    private const string HxValsAttributeName = "hx-vals";
+    private const string HxOnEventAttributeName = "hx-on-events";
+    private const string HxOnAttributePrefix = "hx-on-";
 
 
     /// <summary>
