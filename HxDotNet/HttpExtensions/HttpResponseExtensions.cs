@@ -2,6 +2,7 @@ using System;
 using System.Text.Json;
 using HxDotNet.Configuration;
 using HxDotNet.Core.Constants;
+using HxDotNet.Core.Models;
 
 namespace HxDotNet.HttpExtensions;
 
@@ -10,6 +11,57 @@ namespace HxDotNet.HttpExtensions;
 /// </summary>
 public static class HttpResponseExtensions
 {
+	/// <summary>
+	///  Sets the HxResponseHeaders.
+	/// </summary>
+    public static HttpResponse SetHxHeaders(this HttpResponse response, HxResponseHeaders headers)
+    {
+        if (headers.HxLocation is not null)
+        {
+            response.HxLocation(headers.HxLocation);
+        }
+        if (headers.HxPushUrl is not null)
+        {
+            response.HxPushUrl(headers.HxPushUrl);
+        }
+        if (headers.HxRedirect is not null)
+        {
+            response.HxRedirect(headers.HxRedirect);
+        }
+        if (headers.HxRefresh is bool hxRefresh)
+        {
+            response.HxRefresh(hxRefresh);
+        }
+        if (headers.HxReplaceUrl is not null)
+        {
+            response.HxReplaceUrl(headers.HxReplaceUrl);
+        }
+        if (headers.HxReswap is not null)
+        {
+            response.HxReswap(headers.HxReswap);
+        }
+        if (headers.HxRetarget is not null)
+        {
+            response.HxRetarget(headers.HxRetarget);
+        }
+        if (headers.HxReselect is not null)
+        {
+            response.HxReselect(headers.HxReselect);
+        }
+        if (headers.HxTrigger is not null)
+        {
+            response.HxTrigger(headers.HxTrigger);
+        }
+        if (headers.HxTriggerAfterSettle is not null)
+        {
+            response.HxTriggerAfterSettle(headers.HxTriggerAfterSettle);
+        }
+        if (headers.HxTriggerAfterSwap is not null)
+        {
+            response.HxTriggerAfterSwap(headers.HxTriggerAfterSwap);
+        }
+        return response;
+    }
 
     /// <summary>
     /// <inheritdoc cref="HxResponseHeaderNames.HxLocation"/>
@@ -22,6 +74,7 @@ public static class HttpResponseExtensions
         response.Headers.Append(HxResponseHeaderNames.HxLocation, uri.ToString());
         return response;
     }
+
     /// <summary>
     /// <inheritdoc cref="HxResponseHeaderNames.HxLocation"/>
     /// </summary>
@@ -33,6 +86,7 @@ public static class HttpResponseExtensions
         response.Headers.Append(HxResponseHeaderNames.HxLocation, url);
         return response;
     }
+
     /// <summary>
     /// <inheritdoc cref="HxResponseHeaderNames.HxPushUrl"/>
     /// </summary>
@@ -44,6 +98,7 @@ public static class HttpResponseExtensions
         response.Headers.Append(HxResponseHeaderNames.HxPushUrl, uri.ToString());
         return response;
     }
+
     /// <summary>
     /// <inheritdoc cref="HxResponseHeaderNames.HxPushUrl"/>
     /// </summary>
@@ -68,6 +123,7 @@ public static class HttpResponseExtensions
         response.Headers.Append(HxResponseHeaderNames.HxRedirect, url);
         return response;
     }
+
     /// <summary>
     /// <inheritdoc cref="HxResponseHeaderNames.HxRedirect"/>
     /// </summary>
@@ -80,6 +136,7 @@ public static class HttpResponseExtensions
         response.Headers.Append(HxResponseHeaderNames.HxRedirect, uri.ToString());
         return response;
     }
+
     /// <summary>
     /// <inheritdoc cref="HxResponseHeaderNames.HxRefresh"/>
     /// </summary>
@@ -92,6 +149,7 @@ public static class HttpResponseExtensions
         response.Headers.Append(HxResponseHeaderNames.HxRefresh, shouldRefresh ? "true" : "false");
         return response;
     }
+
     /// <summary>
     /// <inheritdoc cref="HxResponseHeaderNames.HxReplaceUrl"/>
     /// </summary>
@@ -104,6 +162,7 @@ public static class HttpResponseExtensions
         response.Headers.Append(HxResponseHeaderNames.HxReplaceUrl, url);
         return response;
     }
+
     /// <summary>
     /// <inheritdoc cref="HxResponseHeaderNames.HxReplaceUrl"/>
     /// </summary>
@@ -116,6 +175,7 @@ public static class HttpResponseExtensions
         response.Headers.Append(HxResponseHeaderNames.HxReplaceUrl, uri.ToString());
         return response;
     }
+
     /// <summary>
     /// Sets the hx-replace-url header to false.
     /// <inheritdoc cref="HxResponseHeaderNames.HxReplaceUrl"/>
@@ -142,6 +202,7 @@ public static class HttpResponseExtensions
         response.Headers.Append(HxResponseHeaderNames.HxReswap, value);
         return response;
     }
+
     /// <summary>
     /// <inheritdoc cref="HxResponseHeaderNames.HxRetarget"/>
     /// </summary>
@@ -154,6 +215,7 @@ public static class HttpResponseExtensions
         response.Headers.Append(HxResponseHeaderNames.HxRetarget, value);
         return response;
     }
+
     /// <summary>
     /// <inheritdoc cref="HxResponseHeaderNames.HxReselect"/>
     /// </summary>
@@ -166,6 +228,7 @@ public static class HttpResponseExtensions
         response.Headers.Append(HxResponseHeaderNames.HxReselect, value);
         return response;
     }
+
     /// <summary>
     /// <inheritdoc cref="HxResponseHeaderNames.HxTrigger"/>
     /// </summary>
@@ -173,11 +236,15 @@ public static class HttpResponseExtensions
     /// <param name="events"></param>
     /// <returns></returns>
     /// <inheritdoc />
-    public static HttpResponse HxTrigger(this HttpResponse response, IReadOnlyDictionary<string, object> events)
+    public static HttpResponse HxTrigger(
+        this HttpResponse response,
+        IReadOnlyDictionary<string, object> events
+    )
     {
         response.SetEvents(HxResponseHeaderNames.HxTrigger, events);
         return response;
     }
+
     /// <summary>
     /// <inheritdoc cref="HxResponseHeaderNames.HxTriggerAfterSettle"/>
     /// </summary>
@@ -185,11 +252,15 @@ public static class HttpResponseExtensions
     /// <param name="events"></param>
     /// <returns></returns>
     /// <inheritdoc />
-    public static HttpResponse HxTriggerAfterSettle(this HttpResponse response, IReadOnlyDictionary<string, object> events)
+    public static HttpResponse HxTriggerAfterSettle(
+        this HttpResponse response,
+        IReadOnlyDictionary<string, object> events
+    )
     {
         response.SetEvents(HxResponseHeaderNames.HxTriggerAfterSettle, events);
         return response;
     }
+
     /// <summary>
     /// <inheritdoc cref="HxResponseHeaderNames.HxTriggerAfterSwap"/>
     /// </summary>
@@ -197,29 +268,46 @@ public static class HttpResponseExtensions
     /// <param name="events"></param>
     /// <returns></returns>
     /// <inheritdoc />
-    public static HttpResponse HxTriggerAfterSwap(this HttpResponse response, IReadOnlyDictionary<string, object> events)
+    public static HttpResponse HxTriggerAfterSwap(
+        this HttpResponse response,
+        IReadOnlyDictionary<string, object> events
+    )
     {
         response.SetEvents(HxResponseHeaderNames.HxTriggerAfterSwap, events);
         return response;
     }
-    private static void SetEvents(this HttpResponse response, string triggerHeader, IReadOnlyDictionary<string, object> events)
+
+    private static void SetEvents(
+        this HttpResponse response,
+        string triggerHeader,
+        IReadOnlyDictionary<string, object> events
+    )
     {
-        if (triggerHeader is not HxResponseHeaderNames.HxTrigger and not HxResponseHeaderNames.HxTriggerAfterSettle
-        and not HxResponseHeaderNames.HxTriggerAfterSwap)
+        if (
+            triggerHeader
+            is not HxResponseHeaderNames.HxTrigger
+                and not HxResponseHeaderNames.HxTriggerAfterSettle
+                and not HxResponseHeaderNames.HxTriggerAfterSwap
+        )
         {
             throw new ArgumentException("Invalid trigger header", triggerHeader);
         }
         var hasCurrentValues = response.Headers.TryGetValue(triggerHeader, out var currentHeader);
         if (hasCurrentValues)
         {
-            var currentEvents = JsonSerializer.Deserialize<Dictionary<string, object>>(currentHeader.ToString())!;
+            var currentEvents = JsonSerializer.Deserialize<Dictionary<string, object>>(
+                currentHeader.ToString()
+            )!;
             foreach (var (key, value) in events)
             {
                 currentEvents.TryAdd(key, value);
             }
             events = currentEvents;
         }
-        response.Headers[triggerHeader] = JsonSerializer.Serialize(events, JsonConfiguration.Options);
+        response.Headers[triggerHeader] = JsonSerializer.Serialize(
+            events,
+            JsonConfiguration.Options
+        );
     }
 
     /// <summary>
@@ -232,6 +320,7 @@ public static class HttpResponseExtensions
         response.StatusCode = 286;
         return response;
     }
+
     /// <summary>
     /// Sets the status code to statusCode
     /// </summary>
@@ -242,6 +331,5 @@ public static class HttpResponseExtensions
     {
         response.StatusCode = statusCode;
         return response;
-
     }
 }
