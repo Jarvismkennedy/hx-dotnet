@@ -3,12 +3,12 @@ using HxDotNet.HttpExtensions;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HxDotNet.Mvc;
+
 /// <summary>
 /// Controller that extends from <see cref="Controller"/>, adding htmx specific functionality.
 /// </summary>
 public class HxController : Controller
 {
-#pragma warning disable S6967 // ModelState.IsValid should be called in controller actions
     /// <summary>
     /// Returns <see cref="Controller.View()"/> if the request was not sent by htmx, or if the <see cref="HxRequestHeaders.HxHistoryRestoreRequest"/> header is set to true.
     /// Otherwise it returns <see cref="Controller.PartialView()"/>
@@ -16,8 +16,8 @@ public class HxController : Controller
     /// <param name="Name"></param>
     /// <param name="Model"></param>
     /// <returns></returns>
-    public ActionResult HxView(string? Name=null, object? Model=null)
-#pragma warning restore S6967 // ModelState.IsValid should be called in controller actions
+    [NonAction]
+    public ActionResult HxView(string? Name = null, object? Model = null)
     {
         HxRequestHeaders headers = HttpContext.Request.GetHxHeaders();
         if (
@@ -33,6 +33,5 @@ public class HxController : Controller
         }
 
         return View(Name, Model);
-
     }
 }
