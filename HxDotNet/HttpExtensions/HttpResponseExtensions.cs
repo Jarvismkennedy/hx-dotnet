@@ -1,4 +1,3 @@
-using System;
 using System.Text.Json;
 using HxDotNet.Configuration;
 using HxDotNet.Core.Constants;
@@ -11,9 +10,9 @@ namespace HxDotNet.HttpExtensions;
 /// </summary>
 public static class HttpResponseExtensions
 {
-	/// <summary>
-	///  Sets the HxResponseHeaders.
-	/// </summary>
+    /// <summary>
+    ///  Sets the HxResponseHeaders.
+    /// </summary>
     public static HttpResponse SetHxHeaders(this HttpResponse response, HxResponseHeaders headers)
     {
         if (headers.HxLocation is not null)
