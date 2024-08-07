@@ -1,5 +1,3 @@
-using System.Text.Json;
-using HxDotNet.Configuration;
 using HxDotNet.Core.Constants;
 using HxDotNet.Core.Models;
 
@@ -226,87 +224,6 @@ public static class HttpResponseExtensions
     {
         response.Headers.Append(HxResponseHeaderNames.HxReselect, value);
         return response;
-    }
-
-    /// <summary>
-    /// <inheritdoc cref="HxResponseHeaderNames.HxTrigger"/>
-    /// </summary>
-    /// <param name="response"></param>
-    /// <param name="events"></param>
-    /// <returns></returns>
-    /// <inheritdoc />
-    public static HttpResponse HxTrigger(
-        this HttpResponse response,
-        IReadOnlyDictionary<string, object> events
-    )
-    {
-        response.SetEvents(HxResponseHeaderNames.HxTrigger, events);
-        return response;
-    }
-
-    /// <summary>
-    /// <inheritdoc cref="HxResponseHeaderNames.HxTriggerAfterSettle"/>
-    /// </summary>
-    /// <param name="response"></param>
-    /// <param name="events"></param>
-    /// <returns></returns>
-    /// <inheritdoc />
-    public static HttpResponse HxTriggerAfterSettle(
-        this HttpResponse response,
-        IReadOnlyDictionary<string, object> events
-    )
-    {
-        response.SetEvents(HxResponseHeaderNames.HxTriggerAfterSettle, events);
-        return response;
-    }
-
-    /// <summary>
-    /// <inheritdoc cref="HxResponseHeaderNames.HxTriggerAfterSwap"/>
-    /// </summary>
-    /// <param name="response"></param>
-    /// <param name="events"></param>
-    /// <returns></returns>
-    /// <inheritdoc />
-    public static HttpResponse HxTriggerAfterSwap(
-        this HttpResponse response,
-        IReadOnlyDictionary<string, object> events
-    )
-    {
-        response.SetEvents(HxResponseHeaderNames.HxTriggerAfterSwap, events);
-        return response;
-    }
-
-    private static void SetEvents(
-        this HttpResponse response,
-        string triggerHeader,
-        IReadOnlyDictionary<string, object> events
-    )
-    {
-        if (
-            triggerHeader
-            is not HxResponseHeaderNames.HxTrigger
-                and not HxResponseHeaderNames.HxTriggerAfterSettle
-                and not HxResponseHeaderNames.HxTriggerAfterSwap
-        )
-        {
-            throw new ArgumentException("Invalid trigger header", triggerHeader);
-        }
-        var hasCurrentValues = response.Headers.TryGetValue(triggerHeader, out var currentHeader);
-        if (hasCurrentValues)
-        {
-            var currentEvents = JsonSerializer.Deserialize<Dictionary<string, object>>(
-                currentHeader.ToString()
-            )!;
-            foreach (var (key, value) in events)
-            {
-                currentEvents.TryAdd(key, value);
-            }
-            events = currentEvents;
-        }
-        response.Headers[triggerHeader] = JsonSerializer.Serialize(
-            events,
-            JsonConfiguration.Options
-        );
     }
 
     /// <summary>

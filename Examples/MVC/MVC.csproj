@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="hx-dotnet" />
+    <ProjectReference Include="..\..\HxDotNet\HxDotNet.csproj" />
   </ItemGroup>
 
 </Project>

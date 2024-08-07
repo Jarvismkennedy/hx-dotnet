@@ -1,5 +1,7 @@
 using System.Diagnostics;
-using HxDotNet.MVC;
+using HxDotNet.Core.Models;
+using HxDotNet.HttpExtensions;
+using HxDotNet.Mvc;
 using Microsoft.AspNetCore.Mvc;
 using MVC.Models;
 
@@ -19,8 +21,15 @@ public class HomeController : HxController
         return HxView();
     }
 
-    public IActionResult Htmx(){
-        return HxView("Htmx");    
+    public IActionResult Htmx()
+    {
+        Response
+            .HxTriggerAfterSettle(("event1", new { myValue = "myValue" }))
+            .HxTrigger("event2")
+            .HxTriggerAfterSwap([new ServerEvent("event3", new { anotherValue = true }), "event4"])
+            .HxReswap("none")
+            .HxStopPolling();
+        return HxView("Htmx");
     }
 
     public IActionResult Privacy()
@@ -31,6 +40,8 @@ public class HomeController : HxController
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
     {
-        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        return View(
+            new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier }
+        );
     }
 }

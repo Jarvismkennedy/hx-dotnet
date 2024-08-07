@@ -16,16 +16,17 @@ which will return `Controller.View` or `Controller.PartialView` depending on the
 
 # Response headers
 
-The static class `HxDotNet.HttpExtensions.HttpResponseExtensions` provides extension methods for setting the response headers,
+The static class `HxDotNet.HttpExtensions.HttpResponseExtensions`, and `HxDotNet.HttpExtensions.HttpResponseTriggerExtensions`
+provides extension methods for setting the response headers. The trigger extensions take `HxDotnet.Core.Models.ServerEvent`'s 
+which can be implicitly converted to from strings (initialized with an empty details object), or key value pairs.
 
 ```cs
-IReadOnlyDictionary<string, object> triggerAfterSettleEvents =
-    new Dictionary<string, object>(StringComparer.InvariantCulture)
-    {
-        {"my-event", new { myValue = "my-value" }},
-    };
-
-Response.HxTriggerAfterSettle(triggerAfterSettleEvents).HxReswap("none").HxStopPolling();
+Response
+	.HxTriggerAfterSettle(("event1", new { myValue = "myValue" })) // equivalent to new ServerEvent("event1", new { myValue="myValue" })
+	.HxTrigger("event2") // equivalent to new ServerEvent("event2", new {})
+	.HxTriggerAfterSwap([new ServerEvent("event3", new { anotherValue = true }), "event4"])
+	.HxReswap("none")
+	.HxStopPolling();
 ```
 
 # Request headers
