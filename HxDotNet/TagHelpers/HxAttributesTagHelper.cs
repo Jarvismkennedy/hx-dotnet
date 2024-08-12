@@ -136,7 +136,7 @@ public class HxAttributesTagHelper : TagHelper
     /// disables htmx processing for the given node and any children nodes
     /// </summary>
     [HtmlAttributeName(HxDisableAttributeName)]
-    public string? HxDisable { get; set; }
+    public bool HxDisable { get; set; }
 
 
     /// <summary>
@@ -328,10 +328,12 @@ public class HxAttributesTagHelper : TagHelper
         {
             output.Attributes.SetAttribute(HxDeleteAttributeName, HxDelete);
         }
-        if (HxDisable is not null)
+
+        if (HxDisable)
         {
-            output.Attributes.SetAttribute(HxDisableAttributeName, HxDisable);
+            output.Attributes.SetAttribute(HxDisableAttributeName, "true");
         }
+
         if (HxDisableElt is not null)
         {
             output.Attributes.SetAttribute(HxDisableEltAttributeName, HxDisableElt);

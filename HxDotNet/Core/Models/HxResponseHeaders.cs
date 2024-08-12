@@ -1,3 +1,4 @@
+using System.Collections;
 using HxDotNet.Core.Constants;
 
 namespace HxDotNet.Core.Models;
@@ -50,15 +51,15 @@ public class HxResponseHeaders
     /// <summary>
     /// <iheritdoc cref="HxResponseHeaderNames.HxTrigger" />
     /// </summary>
-    public IReadOnlyDictionary<string, object>? HxTrigger { get; set; }
+    public ServerEvent[]? HxTrigger { get; set; }
 
     /// <summary>
     /// <iheritdoc cref="HxResponseHeaderNames.HxTriggerAfterSettle" />
     /// </summary>
-    public IReadOnlyDictionary<string, object>? HxTriggerAfterSettle { get; set; }
+    public ServerEvent[]? HxTriggerAfterSettle { get; set; }
 
     /// <summary>
     /// <iheritdoc cref="HxResponseHeaderNames.HxTriggerAfterSwap" />
     /// </summary>
-    public IReadOnlyDictionary<string, object>? HxTriggerAfterSwap { get; set; }
+    public ServerEvent[]? HxTriggerAfterSwap { get; set; }
 }

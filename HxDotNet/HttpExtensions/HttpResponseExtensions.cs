@@ -47,15 +47,15 @@ public static class HttpResponseExtensions
         }
         if (headers.HxTrigger is not null)
         {
-            response.HxTrigger(headers.HxTrigger);
+            response.HxTrigger(headers.HxTrigger.ToArray().AsSpan());
         }
         if (headers.HxTriggerAfterSettle is not null)
         {
-            response.HxTriggerAfterSettle(headers.HxTriggerAfterSettle);
+            response.HxTriggerAfterSettle(headers.HxTriggerAfterSettle.AsSpan());
         }
         if (headers.HxTriggerAfterSwap is not null)
         {
-            response.HxTriggerAfterSwap(headers.HxTriggerAfterSwap);
+            response.HxTriggerAfterSwap(headers.HxTriggerAfterSwap.AsSpan());
         }
         return response;
     }
