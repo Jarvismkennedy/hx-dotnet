@@ -21,6 +21,10 @@ public class HxAttributesTagHelper : TagHelper
     private const string HxOnEventAttributeName = "hx-on-events";
     private const string HxOnAttributePrefix = "hx-on-";
 
+    /// <summary>
+    /// <inheritdoc />
+    /// </summary>
+    public override int Order => -10000;
 
     /// <summary>
     /// issues a GET to the specified URL
